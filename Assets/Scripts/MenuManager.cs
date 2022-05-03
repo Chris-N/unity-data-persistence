@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,7 +11,7 @@ public class MenuManager : MonoBehaviour
 {
     public void StartGame()
     {
-
+        SceneManager.LoadScene("main");
     }
 
     public void Exit()
@@ -22,15 +23,8 @@ public class MenuManager : MonoBehaviour
 #endif
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void OnEditEnd(string test)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Result: " + test);
     }
 }
