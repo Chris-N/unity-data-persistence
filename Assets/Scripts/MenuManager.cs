@@ -9,6 +9,28 @@ using UnityEditor;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
+
+    [System.Serializable]
+    public struct RecordHighScore
+    {
+        public string Name;
+        public int HighScore;
+    }
+
+    public RecordHighScore rhs;
+
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("main");
@@ -23,8 +45,8 @@ public class MenuManager : MonoBehaviour
 #endif
     }
 
-    public void OnEditEnd(string test)
+    public void OnEditEnd(string name)
     {
-        Debug.Log("Result: " + test);
+        rhs.Name = name;
     }
 }
