@@ -7,7 +7,6 @@ using UnityEngine;
 public class RecordHighScore
 {
     public string Name;
-    public string HighScoreName;
     public int HighScore;
 
     public static void SaveFile(RecordHighScore rhs)

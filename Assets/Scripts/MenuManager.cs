@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
     private void SetupFromFile()
     {
         RecordHighScore.CheckSaveFile(Rhs);
-        if (Rhs.Name == null)
+        if (String.IsNullOrEmpty(Rhs.Name)) 
             return;
 
         NameInput.text = Rhs.Name;
