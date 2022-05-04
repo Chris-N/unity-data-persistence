@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -81,15 +82,17 @@ public class MainManager : MonoBehaviour
     }
     void SetHighScore()
     {
-        if (m_Points > m_MenuManager.rhs.HighScore)
+        if (m_Points > m_MenuManager.Rhs.HighScore)
         {
-            m_MenuManager.rhs.HighScore = m_Points;
+            m_MenuManager.Rhs.HighScore = m_Points;
+            m_MenuManager.Rhs.Name = m_MenuManager.PlayerName;
             DisplayRecordHighScore();
+            RecordHighScore.SaveFile(m_MenuManager.Rhs);
         }
     }
 
     void DisplayRecordHighScore()
     {
-        HighScoreText.text = $"High Score : {m_MenuManager.rhs.Name} : {m_MenuManager.rhs.HighScore}";
+        HighScoreText.text = $"High Score : {m_MenuManager.Rhs.Name} : {m_MenuManager.Rhs.HighScore}";
     }
 }
